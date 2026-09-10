@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Register</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="binder">
+
+  <!-- Tab rail -->
+  <nav class="rail">
+    <div class="rail-mark">SR</div>
+    <button class="tab tab-roster active" data-panel="roster"><span>Roster</span></button>
+    <button class="tab tab-add" data-panel="add"><span>Add</span></button>
+    <button class="tab tab-update" data-panel="update"><span>Update</span></button>
+    <button class="tab tab-delete" data-panel="delete"><span>Delete</span></button>
+    <div class="rail-status">
+      <span class="dot" id="statusDot"></span>
+      <span id="statusText">checking</span>
+    </div>
+  </nav>
+
+  <!-- Sheet -->
+  <main class="sheet">
+    <div class="margin-rule"></div>
+
+    <!-- Roster panel -->
+    <section class="panel active" data-panel="roster">
+      <header class="sheet-head accent-roster">
+        <h1>Student Register</h1>
+        <p>Every learner on file, at a glance.</p>
+      </header>
+      <div class="sheet-body">
+        <div class="roster-toolbar">
+          <span id="rosterCount" class="roster-count">—</span>
+          <button class="link-btn" id="refreshRoster">refresh</button>
+        </div>
+        <div id="rosterList"><p class="hint">Loading the roster…</p></div>
+      </div>
+    </section>
+
+    <!-- Add panel -->
+    <section class="panel" data-panel="add">
+      <header class="sheet-head accent-add">
+        <h1>Add a student</h1>
+        <p>A new line, a new record.</p>
+      </header>
+      <div class="sheet-body">
+        <form class="ruled-form" id="addForm">
+          <div class="ruled-field">
+            <label for="f-name">Name</label>
+            <input id="f-name" type="text" autocomplete="off">
+          </div>
+          <div class="ruled-field">
+            <label for="f-course">Course</label>
+            <input id="f-course" type="text" autocomplete="off">
+          </div>
+          <div class="ruled-field">
+            <label for="f-marks">Marks</label>
+            <input id="f-marks" type="number" autocomplete="off">
+          </div>
+          <button type="submit" class="pen-btn accent-add">Enter into register</button>
+          <p class="note" id="addNote"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Update panel -->
+    <section class="panel" data-panel="update">
+      <header class="sheet-head accent-update">
+        <h1>Update a student</h1>
+        <p>Correct an entry already on file.</p>
+      </header>
+      <div class="sheet-body">
+        <form class="ruled-form" id="updateForm">
+          <div class="ruled-field">
+            <label for="u-id">Student ID</label>
+            <input id="u-id" type="number" autocomplete="off">
+          </div>
+          <div class="ruled-field">
+            <label for="u-name">Name</label>
+            <input id="u-name" type="text" autocomplete="off">
+          </div>
+          <div class="ruled-field">
+            <label for="u-course">Course</label>
+            <input id="u-course" type="text" autocomplete="off">
+          </div>
+          <div class="ruled-field">
+            <label for="u-marks">Marks</label>
+            <input id="u-marks" type="number" autocomplete="off">
+          </div>
+          <button type="submit" class="pen-btn accent-update">Revise entry</button>
+          <p class="note" id="updateNote"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Delete panel -->
+    <section class="panel" data-panel="delete">
+      <header class="sheet-head accent-delete">
+        <h1>Remove a student</h1>
+        <p>Strike a record from the register.</p>
+      </header>
+      <div class="sheet-body">
+        <form class="ruled-form" id="deleteForm">
+          <div class="ruled-field">
+            <label for="d-id">Student ID</label>
+            <input id="d-id" type="number" autocomplete="off">
+          </div>
+          <button type="submit" class="pen-btn accent-delete">Strike from register</button>
+          <p class="note" id="deleteNote"></p>
+        </form>
+      </div>
+    </section>
+
+    <footer class="sheet-foot">
+      <span>FastAPI + Supabase</span>
+      <span class="api-config">
+        api <input id="apiBase" type="text" value="http://127.0.0.1:8000" spellcheck="false"><button id="saveApi">set</button>
+      </span>
+    </footer>
+  </main>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
